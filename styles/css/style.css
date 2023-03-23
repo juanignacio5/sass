@@ -1,0 +1,278 @@
+@charset "UTF-8";
+/*variables globales*/
+/*acá tendría linkeada la hoja de estilos de nav*/
+/*& para pseudoclases*/
+a {
+  color: blue;
+}
+a:hover {
+  color: red;
+}
+
+/*para concatenar clases*/
+.bloqueUno {
+  background-color: red;
+  border: 2px solid black;
+  margin-bottom: 2px;
+  display: inline-block;
+  padding: 2px;
+  width: 360px;
+  height: 360px;
+}
+.bloqueUno__titulo {
+  color: white;
+}
+
+.bloqueDos {
+  background-color: blue;
+  border: 2px dashed black;
+  display: inline-block;
+  padding: 2px;
+  width: 720px;
+  height: 110px;
+}
+.bloqueDos__titulo {
+  color: red;
+}
+
+/*bucles*/
+.cuenta-1 {
+  font-size: 11px;
+}
+
+.cuenta-2 {
+  font-size: 12px;
+}
+
+.cuenta-3 {
+  font-size: 13px;
+}
+
+.cuenta-4 {
+  font-size: 14px;
+}
+
+.cuenta-5 {
+  font-size: 15px;
+}
+
+.columna-1 {
+  font-size: 2px;
+}
+
+.columna-2 {
+  font-size: 3px;
+}
+
+.columna-3 {
+  font-size: 4px;
+}
+
+.columna-4 {
+  font-size: 5px;
+}
+
+.columna-5 {
+  font-size: 6px;
+}
+
+.columna-6 {
+  font-size: 7px;
+}
+
+.columna-7 {
+  font-size: 8px;
+}
+
+.columna-8 {
+  font-size: 9px;
+}
+
+.columna-9 {
+  font-size: 10px;
+}
+
+.blue {
+  color: blue;
+}
+
+.red {
+  color: red;
+}
+
+.black {
+  color: black;
+}
+
+.fontHelvetica {
+  font-family: "Helvetica", "Arial", "Verdana";
+  font-size: 10px;
+}
+
+.fontArial {
+  font-family: "Helvetica", "Arial", "Verdana";
+  font-size: 10px;
+}
+
+.fontVerdana {
+  font-family: "Helvetica", "Arial", "Verdana";
+  font-size: 10px;
+}
+
+/*condicional*/
+.elemento {
+  background-color: rgb(231, 102, 102);
+  color: black;
+}
+
+/*map*/
+.btn--twitter {
+  color: rgb(71, 206, 255);
+}
+
+.btn--facebook {
+  color: rgb(17, 0, 255);
+}
+
+.btn--send-mail {
+  color: #fff;
+}
+
+.a {
+  text-align: 1;
+}
+
+.b {
+  text-align: 2;
+}
+
+.c {
+  text-align: 3;
+}
+
+/*extend: para compartir partes de estilo*/
+.botonUno, .botonDos {
+  background-color: blue;
+  border: 2px solid black;
+}
+
+.botonDos {
+  color: red;
+}
+
+/* al usar un % indicamos que esa clase nunca se va a usar
+sola, sirve para extender a otras clases que tengan
+esas propiedades*/
+.boton {
+  background-color: black;
+  text-align: center;
+}
+
+.boton {
+  color: brown;
+}
+
+/*mixins: para usar parte de los estilos y darle un valor
+a otro/s*/
+.box--grande {
+  width: 400px;
+  height: 200px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.caja {
+  border: 10px 2px red;
+  box-shadow: 5px 5px 5px grey;
+  border-radius: 15px;
+}
+
+.box1 {
+  height: 100px;
+  width: 100px;
+  background: linear-gradient(to bottom, brown, orange);
+  transition: height 2s;
+}
+.box1:hover {
+  height: 200px;
+  background: brown;
+}
+
+input {
+  width: 200px;
+  transition: width 3s;
+}
+input:focus {
+  width: 300px;
+}
+
+.box2 {
+  width: 100px;
+  height: 100px;
+  background: red;
+  transition: all 2s;
+}
+
+.box2:hover {
+  transform: scale(3, 3);
+}
+
+.box3 {
+  width: 100px;
+  height: 100px;
+  background-color: lightpink;
+  animation-name: animacion1;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in;
+  animation-duration: 5s;
+  animation-delay: 3s;
+}
+
+@keyframes animacion1 {
+  0% {
+    background-color: lightpink;
+  }
+  50% {
+    background-color: lightgreen;
+  }
+  100% {
+    background-color: lightsalmon;
+  }
+}
+h2 {
+  color: orange;
+  animation: desaparecer 5s ease 4s infinite;
+}
+
+@keyframes desaparecer {
+  0% {
+    opacity: 100;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.relleno {
+  height: 110vh;
+}
+
+.box4,
+.box5,
+.box6 {
+  width: 400px;
+  height: 250px;
+  margin: 20px;
+  background-color: lightcoral;
+}
+
+.box6 {
+  position: absolute;
+  right: 10px;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,279 @@
+/*variables globales*/
+$color-principal: blue;
+$color-secundario: red;
+$borde-liso: 2px solid black;
+$borde-rayado: 2px dashed black;
+
+$ancho: 720px;
+$alto: 360px;
+
+/*acá tendría linkeada la hoja de estilos de nav*/
+
+/*& para pseudoclases*/
+
+a {
+    color: $color-principal;
+
+    &:hover {
+        color: $color-secundario;
+    }
+}
+
+/*para concatenar clases*/
+.bloqueUno {
+    background-color: $color-secundario;
+    border: $borde-liso;
+    margin-bottom: 2px;
+    display: inline-block;
+    padding: 2px;
+    width: $ancho/2;
+    height: $alto;
+
+    &__titulo {
+        color: white;
+    }
+}
+
+.bloqueDos {
+    background-color: $color-principal;
+    border: $borde-rayado;
+    display: inline-block;
+    padding: 2px;
+    width: $ancho;
+    height: $alto/2 - 70px;
+
+    &__titulo {
+        color: red;
+    }
+}
+
+/*bucles*/
+@for $i from 1 through 5 {
+    .cuenta-#{$i} {
+        font-size: 10px + $i;
+    }
+}
+
+@for $col from 1 to 10 {
+    .columna-#{$col} {
+        font-size: 1px + $col;
+    }
+}
+
+@each $color in blue,
+red,
+black {
+    .#{$color} {
+        color: $color
+    }
+}
+
+$fonts: "Helvetica", "Arial", "Verdana";
+
+@each $font in $fonts {
+    .font#{$font} {
+        font-family: $fonts;
+        font-size: 10px;
+    }
+}
+
+/*condicional*/
+$colorFondo: rgb(231, 102, 102);
+
+.elemento {
+    background-color: $colorFondo;
+
+    @if (lightness($colorFondo) > 60%) {
+        color: black;
+    }
+
+    @else {
+        color: white;
+    }
+}
+
+/*map*/
+$redes: (
+    twitter: rgb(71, 206, 255),
+    facebook: rgb(17, 0, 255),
+    send-mail: #fff,
+);
+
+@each $red,
+$color in $redes {
+    .btn--#{$red} {
+        color: $color
+    }
+}
+
+$map: (
+    a: 1,
+    b: 2,
+    c: 3,
+);
+
+@each $letra,
+$numero in $map {
+    .#{$letra} {
+        text-align: $numero;
+    }
+}
+
+/*extend: para compartir partes de estilo*/
+
+.botonUno {
+    background-color: blue;
+    border: 2px solid black;
+}
+
+.botonDos {
+    @extend .botonUno;
+    color: red;
+}
+
+/* al usar un % indicamos que esa clase nunca se va a usar
+sola, sirve para extender a otras clases que tengan
+esas propiedades*/
+
+%botonBase {
+    background-color: black;
+    text-align: center;
+}
+
+.boton {
+    @extend %botonBase;
+    color: brown;
+}
+
+/*mixins: para usar parte de los estilos y darle un valor
+a otro/s*/
+
+@mixin size ($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+.box--grande {
+    @include size (400px, 200px)
+}
+
+@mixin flex ($direccion) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: $direccion;
+}
+
+.container {
+    @include flex (column)
+}
+
+@mixin borde ($color, $tamanio) {
+    $ancho: 10px;
+
+    @if ($tamanio ==xl) {
+        $ancho: 20px;
+    }
+
+    @else if ($tamanio ==md) {
+        $ancho: 10px;
+    }
+
+    border: $ancho 2px $color;
+    box-shadow: 5px 5px 5px grey;
+    border-radius: 15px;
+}
+
+.caja {
+    @include borde (red, md)
+}
+
+.box1 {
+    height: 100px;
+    width: 100px;
+    background: linear-gradient(to bottom, brown, orange);
+    transition: height 2s;
+
+    &:hover {
+        height: 200px;
+        background: brown;
+    }
+}
+
+input {
+    width: 200px;
+    transition: width 3s;
+
+    &:focus {
+        width: 300px;
+    }
+}
+
+.box2 {
+    width: 100px;
+    height: 100px;
+    background: red;
+    transition: all 2s;
+}
+
+.box2:hover {
+    transform: scale(3, 3);
+}
+
+.box3 {
+    width: 100px;
+    height: 100px;
+    background-color: lightpink;
+    animation-name: animacion1;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;
+    animation-duration: 5s;
+    animation-delay: 3s;
+}
+
+@keyframes animacion1 {
+    0% {
+        background-color: lightpink;
+    }
+
+    50% {
+        background-color: lightgreen;
+    }
+
+    100% {
+        background-color: lightsalmon;
+    }
+}
+
+h2 {
+    color: orange;
+    animation: desaparecer 5s ease 4s infinite;
+}
+
+@keyframes desaparecer {
+    0% {
+        opacity: 100;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.relleno {
+    height: 110vh;
+}
+
+.box4,
+.box5,
+.box6 {
+    width: 400px;
+    height: 250px;
+    margin: 20px;
+    background-color: lightcoral;
+}
+
+.box6 {
+    position: absolute;
+    right: 10px;
+}
